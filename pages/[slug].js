@@ -2,9 +2,9 @@ import reactx from "react";
 import fs from 'fs'
 import path from "path";
 
-const Post = ({slug}) => {
+const Post = ({contents}) => {
   return (
-    <h1>The slug for this page is : {slug}</h1>
+    <h1>{contents}</h1>
   )
 }
 
@@ -25,12 +25,11 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({params: {slug}}) => {
-
-  const contents = fs.readFileSync(path.join(''))
+  const contents = fs.readFileSync(path.join('posts', slug + '.md')).toString()
 
   return {
     props: {
-      slug
+      contents
     }
   }
 }
