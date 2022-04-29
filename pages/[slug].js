@@ -23,4 +23,12 @@ export const getStaticPaths = async () => {
   }
 }
 
+export const getStaticProps = async ({params: {slug}}) => {
+  return {
+    props: {
+      slug
+    }
+  }
+}
+
 export default Post
