@@ -1,9 +1,9 @@
 import reactx from "react";
 import fs from 'fs'
 
-const Post = () => {
+const Post = ({slug}) => {
   return (
-    <h1>Hello</h1>
+    <h1>The slug for this page is : {slug}</h1>
   )
 }
 
