@@ -1,6 +1,7 @@
 import reactx from "react";
 import fs from 'fs'
 import path from "path";
+import matter from "gray-matter";
 
 const Post = ({contents}) => {
   return (
@@ -25,11 +26,13 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({params: {slug}}) => {
-  const contents = fs.readFileSync(path.join('posts', slug + '.md')).toString()
+  const markdownWithMetadata = fs.readFileSync(path.join('posts', slug + '.md')).toString()
+
+  const parsedMarkdown = matter(markdownWithMetadata)
 
   return {
     props: {
-      contents
+      contents: parsedMarkdown.content
     }
   }
 }
