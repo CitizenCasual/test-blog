@@ -2,10 +2,16 @@ import reactx from "react";
 import fs from 'fs'
 import path from "path";
 import matter from "gray-matter";
+import Head from "next/head";
 
-const Post = ({contents}) => {
+const Post = ({contents, data}) => {
   return (
-    <pre>{contents}</pre>
+    <>
+      <Head>
+        <title>{data.title}</title>
+      </Head>
+      <pre>{contents}</pre>
+    </>
   )
 }
 
@@ -32,7 +38,8 @@ export const getStaticProps = async ({params: {slug}}) => {
 
   return {
     props: {
-      contents: parsedMarkdown.content
+      contents: parsedMarkdown.content,
+      data: parsedMarkdown.data
     }
   }
 }
