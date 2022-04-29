@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
+import { marked } from "marked";
 
 const Post = ({contents, data}) => {
   return (
@@ -36,9 +37,11 @@ export const getStaticProps = async ({params: {slug}}) => {
 
   const parsedMarkdown = matter(markdownWithMetadata)
 
+  const htmlString = marked(parsedMarkdown.content)
+
   return {
     props: {
-      contents: parsedMarkdown.content,
+      htmlString,
       data: parsedMarkdown.data
     }
   }
