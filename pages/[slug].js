@@ -4,7 +4,7 @@ import path from "path";
 
 const Post = ({contents}) => {
   return (
-    <h1>{contents}</h1>
+    <pre>{contents}</pre>
   )
 }
 
