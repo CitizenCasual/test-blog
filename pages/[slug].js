@@ -1,5 +1,6 @@
 import reactx from "react";
 import fs from 'fs'
+import path from "path";
 
 const Post = ({slug}) => {
   return (
@@ -24,6 +25,9 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({params: {slug}}) => {
+
+  const contents = fs.readFileSync(path.join(''))
+
   return {
     props: {
       slug
