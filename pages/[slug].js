@@ -5,13 +5,13 @@ import matter from "gray-matter";
 import Head from "next/head";
 import { marked } from "marked";
 
-const Post = ({contents, data}) => {
+const Post = ({htmlString, data}) => {
   return (
     <>
       <Head>
         <title>{data.title}</title>
       </Head>
-      <pre>{contents}</pre>
+      <div dangerouslySetInnerHTML={{ __html: htmlString }} />
     </>
   )
 }
